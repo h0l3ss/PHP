@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamada de API no Power BI</title>
+</head>
+<body>
+
+  <button id="btnChamarAPI">Chamar API do Power BI</button>
+
+  <script>
+    document.getElementById('btnChamarAPI').addEventListener('click', function() {
+      // Substitua a URL pela sua URL da API ou recurso desejado
+      const apiUrl = 'https://app.powerbi.com/groups/27e549c8-fc25-432c-9440-531c32dafa4e/datasets/64406402-261e-4025-9edd-a03bbae964da/details?experience=power-bi';
+
+      // Realiza uma chamada à API usando o método fetch
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Erro na chamada à API: ${response.status} ${response.statusText}`);
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log('Resposta da API:', data);
+          // Aqui você pode adicionar lógica para manipular a resposta da API, se necessário
+        })
+        .catch(error => {
+          console.error('Erro na chamada à API:', error);
+        });
+    });
+  </script>
+
+</body>
+</html>
